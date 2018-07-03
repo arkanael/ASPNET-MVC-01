@@ -1,0 +1,85 @@
+﻿@model  Projeto.Web.Models.ClienteConsultaViewModel
+@{
+    ViewBag.Title = "Consulta";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="row page-titles">
+    <div class="col-md-12 col-12 align-self-center">
+        <h3 class="text-themecolor">Consulta de Clientes</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+            <li class="breadcrumb-item">Cliente</li>
+            <li class="breadcrumb-item active">Cadastro</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-block">
+                <h4 class="card-title">Consulta de Clientes</h4>
+                <h6 class="card-subtitle">
+                    Relação de clientes cadastrados.
+                    <code></code>
+                </h6>
+                @using (Html.BeginForm())
+                {
+
+                    <div class="row form-horizontal form-material">
+                        <div class="col-md-4 col-8 align-self-center">
+                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control form-control-line form-material" } })
+                        </div>
+                        <div class="col-md-8 col-4 align-self-center">
+                            <button class="btn btn-success">Pesquisar Cliente</button>
+                            @ViewBag.Mensagem
+                        </div>
+                    </div>
+                }
+
+                @if (ViewBag.Dados != null)
+                {
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Nome do Cliente</th>
+                                    <th>Endereço de E-mail</th>
+                                    <th>Telefone</th>
+                                    <th>Data do Cadastro</th>
+                                    <th>Operações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var cliente in ViewBag.Dados)
+                                {
+                                    <tr>
+                                        <td>@cliente.IdCliente</td>
+                                        <td>@cliente.Nome</td>
+                                        <td>@cliente.Email</td>
+                                        <td>@cliente.Telefone</td>
+                                        <td>@cliente.DataCadastro.ToString("dd/MM/yyyy")</td>
+                                        <td>
+                                            @Html.ActionLink("Visualizar", "Detalhes", new { id = cliente.IdCliente }, new { @class = "btn btn-warning btn-sm", @onclick = "return confirm(Deseja excluir este cliente?);" })
+                                            @Html.ActionLink("Atualizar", "Edicao", new { id = cliente.IdCliente }, new { @class = "btn btn-primary btn-sm" })
+                                            @Html.ActionLink("Excluir", "Exclusao", new { id = cliente.IdCliente }, new { @class = "btn btn-danger btn-sm", @onclick = "return confirm('Deseja excluir este Cliente ? ');" })
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6">Quantidades de Clientes: @ViewBag.Dados.Count</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

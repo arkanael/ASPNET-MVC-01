@@ -1,0 +1,50 @@
+﻿@model Projeto.Web.Models.ClienteConsultaViewModel
+
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="row page-titles">
+    <div class="col-md-12 col-12 align-self-center">
+        <h3 class="text-themecolor">Detalhes de Clientes</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+            <li class="breadcrumb-item">Cliente</li>
+            <li class="breadcrumb-item active">Detalhes</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-block">
+                <h4 class="card-title">Dados de Clientes</h4>
+                <h6 class="card-subtitle">
+                    Informação dos clientes cadastrados no sitema.
+                </h6>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdCliente, htmlAttributes: new { @class = "control-label" })
+                    @Html.DisplayFor(model => model.IdCliente, new { htmlAttributes = new { @class = "form-control form-control-line" } })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label" })
+                    @Html.DisplayFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control form-control-line" } })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                    @Html.DisplayFor(model => model.Email, new { htmlAttributes = new { @class = "form-control form-control-line" } })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label" })
+                    @Html.DisplayFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control form-control-line" } })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DataCadastro, htmlAttributes: new { @class = "control-label" })
+                    @Html.DisplayFor(model => model.DataCadastro, new { htmlAttributes = new { @class = "form-control form-control-line" } })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
