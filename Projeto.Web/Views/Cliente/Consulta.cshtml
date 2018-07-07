@@ -59,6 +59,7 @@
                                         <td>@cliente.Nome</td>
                                         <td>@cliente.Email</td>
                                         <td>@cliente.Telefone</td>
+                                        
                                         <td>@cliente.DataCadastro.ToString("dd/MM/yyyy")</td>
                                         <td>
                                             @Html.ActionLink("Visualizar", "Detalhes", new { id = cliente.IdCliente }, new { @class = "btn btn-warning btn-sm", @onclick = "return confirm(Deseja excluir este cliente?);" })

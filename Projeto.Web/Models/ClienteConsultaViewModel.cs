@@ -25,5 +25,8 @@ namespace Projeto.Web.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataCadastro { get; set; }
 
+        [Display(Name = "Logradouro: ")]
+        public string Logradouro { get; set; }
+
     }
 }

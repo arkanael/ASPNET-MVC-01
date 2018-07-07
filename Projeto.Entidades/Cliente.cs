@@ -15,5 +15,7 @@ namespace Projeto.Entidades
         public string DDD { get; set; }
         public string Telefone { get; set; }
         public DateTime DataCadastro { get; set; }
+
+        public Endereco Endereco { get; set; }
     }
 }

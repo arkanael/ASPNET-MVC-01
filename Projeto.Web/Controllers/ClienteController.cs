@@ -24,10 +24,13 @@ namespace Projeto.Web.Controllers
                 try
                 {
                     Cliente cliente = new Cliente();
+                    cliente.Endereco = new Endereco();
+
                     cliente.Nome = model.Nome;
                     cliente.Email = model.Email;
                     cliente.Telefone = model.Telefone;
                     cliente.DataCadastro = DateTime.Now;
+                    cliente.Endereco.Logradouro = model.Logradouro; 
 
                     ClienteDal d = new ClienteDal();
                     d.Insert(cliente);
@@ -79,13 +82,19 @@ namespace Projeto.Web.Controllers
             try
             {
                 ClienteDal d = new ClienteDal();
-                Cliente cliente = d.FindById(id);
+
+                Cliente cliente = new Cliente();
+
+                cliente.Endereco = new Endereco();
+
+                cliente = d.FindById(id);
 
                 model.IdCliente = cliente.IdCliente;
                 model.Nome = cliente.Nome;
                 model.Email = cliente.Email;
                 model.Telefone = cliente.Telefone;
                 model.DataCadastro = cliente.DataCadastro;
+                model.Logradouro = cliente.Endereco.Logradouro;
             }
             catch (Exception erro)
             {
@@ -103,13 +112,23 @@ namespace Projeto.Web.Controllers
             try
             {
                 ClienteDal d = new ClienteDal();
-                Cliente cliente = d.FindById(id);
+                EnderecoDal ed = new EnderecoDal();
+
+                Cliente cliente = new Cliente();
+                cliente.Endereco = new Endereco();
+
+                cliente = d.FindById(id);
+                cliente.Endereco = ed.findById(id);
 
                 model.IdCliente = cliente.IdCliente;
                 model.Nome = cliente.Nome;
                 model.Email = cliente.Email;
                 model.Telefone = cliente.Telefone;
                 model.DataCadastro = cliente.DataCadastro;
+
+
+                model.IdEndereco = cliente.Endereco.IdEndereco;
+                model.Logradouro = cliente.Endereco.Logradouro;
             }
             catch (Exception erro)
             {
@@ -127,15 +146,23 @@ namespace Projeto.Web.Controllers
             {
                 try
                 {
+                    ClienteDal d = new ClienteDal();
+                    EnderecoDal ed = new EnderecoDal();
+
                     Cliente cliente = new Cliente();
+                    cliente.Endereco = new Endereco();
+
                     cliente.IdCliente = model.IdCliente;
                     cliente.Nome = model.Nome;
                     cliente.Email = model.Email;
                     cliente.Telefone = model.Telefone;
                     cliente.DataCadastro = model.DataCadastro;
 
-                    ClienteDal d = new ClienteDal();
+                    cliente.Endereco.IdEndereco = model.IdEndereco;
+                    cliente.Endereco.Logradouro = model.Logradouro;
+
                     d.Update(cliente);
+                    ed.Update(cliente.Endereco);
 
                     ViewBag.Mensagem = "Cliente atualizado com sucesso.";
                     ModelState.Clear();

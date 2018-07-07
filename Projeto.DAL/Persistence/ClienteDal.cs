@@ -28,6 +28,7 @@ namespace Projeto.DAL.Persistence
                 Con.SaveChanges();
             }
         }
+        
 
         public void Delete(Cliente cliente)
         {
@@ -46,11 +47,21 @@ namespace Projeto.DAL.Persistence
             }
         }
 
+        public List<Cliente> FindAllEndereco()
+        {
+            using (Conexao con = new Conexao())
+            {
+                return con.Clientes.Include("Endereco")
+                    .ToList();
+            }
+        }
+
         public Cliente FindById(int id)
         {
             using (Conexao con = new Conexao())
             {
-                return con.Clientes.Find(id);
+                return con.Clientes
+                    .Find(id);
             }
         }
 

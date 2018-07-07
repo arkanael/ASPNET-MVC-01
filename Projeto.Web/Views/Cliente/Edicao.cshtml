@@ -27,7 +27,7 @@
                         para cadastrar um clientes preencha os dados abaixo.
                     </h6>
                     <div class="form-horizontal form-material">
-                        <div class="form-group">
+                        <div class="form-group hidden-md-down hidden-md-up">
                             @Html.LabelFor(model => model.IdCliente, htmlAttributes: new { @class = "control-label" })
                             <div class="col-md-12">
                                 @Html.EditorFor(model => model.IdCliente, new { htmlAttributes = new { @class = "form-control form-control-line", @readonly = "readonly" } })
@@ -49,17 +49,31 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label" })
                             <div class="col-md-12">
                                 @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control form-control-line" } })
                                 @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.DataCadastro, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.DataCadastro, htmlAttributes: new { @class = "control-label" })
                             <div class="col-md-12">
                                 @Html.EditorFor(model => model.DataCadastro, new { htmlAttributes = new { @class = "form-control form-control-line" } })
                                 @Html.ValidationMessageFor(model => model.DataCadastro, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group hidden-md-down hidden-md-up">
+                            @Html.LabelFor(model => model.IdEndereco, htmlAttributes: new { @class = "control-label" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.IdEndereco, new { htmlAttributes = new { @class = "form-control form-control-line" } })
+                                @Html.ValidationMessageFor(model => model.IdEndereco, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Logradouro, htmlAttributes: new { @class = "control-label" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Logradouro, new { htmlAttributes = new { @class = "form-control form-control-line" } })
+                                @Html.ValidationMessageFor(model => model.Logradouro, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>

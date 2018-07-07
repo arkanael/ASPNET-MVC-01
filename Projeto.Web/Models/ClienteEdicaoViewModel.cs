@@ -23,14 +23,22 @@ namespace Projeto.Web.Models
         public string Email { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        [MaxLength(10, ErrorMessage = "Nome deve ter no maximo {1} caracteres.")]
-        [MinLength(9, ErrorMessage = "Nome deve ter no minimo {1} caracteres.")]
-        [Display(Name = "Telefone: ")]
+        [MaxLength(11, ErrorMessage = "Nome deve ter no maximo {1} caracteres.")]
+        [MinLength(11, ErrorMessage = "Nome deve ter no minimo {1} caracteres.")]
+        [Display(Name = "Telefone com DDD: ")]
         public string Telefone { get; set; }
 
         [Display(Name = "Data de Cadastro: ")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataCadastro { get; set; }
+
+        public int IdEndereco { get; set; }
+
+        [MaxLength(50, ErrorMessage = "Endereco deve ter no maximo {1} caracteres.")]
+        [MinLength(3, ErrorMessage = "Endereco deve ter no minimo {1} caracteres.")]
+        [Display(Name = "Logradouro: ")]
+        [Required(ErrorMessage = "Campo obrigatório")]
+        public string Logradouro { get; set; }
 
     }
 }

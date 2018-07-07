@@ -26,5 +26,10 @@ namespace Projeto.Web.Models
         [Display(Name = "Telefone com DDD: ")]
         public string Telefone { get; set; }
 
+        [MaxLength(50, ErrorMessage = "Endereco deve ter no maximo {1} caracteres.")]
+        [MinLength(3, ErrorMessage = "Endereco deve ter no minimo {1} caracteres.")]
+        [Display(Name = "Logradouro: ")]
+        [Required(ErrorMessage = "Campo obrigatório")]
+        public string Logradouro { get; set; }
     }
 }

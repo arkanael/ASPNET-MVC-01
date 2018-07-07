@@ -20,10 +20,12 @@ namespace Projeto.DAL.DataSource
           
 
             modelBuilder.Configurations.Add(new ClienteConfiguration());
+            modelBuilder.Configurations.Add(new EnderecoConfiguration());
+
 
         }
 
         public DbSet<Cliente> Clientes { get; set; }
-
+        public DbSet<Endereco> Enderecos { get; set; }
     }
 }

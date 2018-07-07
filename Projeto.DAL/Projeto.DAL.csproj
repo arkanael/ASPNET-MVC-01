@@ -49,9 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ClienteConfiguration.cs" />
+    <Compile Include="Configuration\EnderecoConfiguration.cs" />
     <Compile Include="DataSource\Conexao.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\ClienteDal.cs" />
+    <Compile Include="Persistence\EnderecoDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
